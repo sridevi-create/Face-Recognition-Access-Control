@@ -3,7 +3,7 @@
 
 This project implements a real-time Face Recognition Based Secure Access Control System using computer vision and machine learning techniques. The system authenticates individuals through live webcam input, grants or denies access based on facial similarity, and logs every access attempt into a MySQL database. A modern Streamlit web dashboard provides live monitoring, analytics, and log visualization.
 
-🎯 Objectives
+# 🎯 Objectives
 
   To design a secure access control mechanism using facial biometrics
 
@@ -13,7 +13,7 @@ This project implements a real-time Face Recognition Based Secure Access Control
 
   To provide a user-friendly web-based monitoring dashboard
 
-🧠 System Features
+# 🧠 System Features
 
   ✅ Live face detection using webcam
 
@@ -33,7 +33,7 @@ This project implements a real-time Face Recognition Based Secure Access Control
 
   ✅ Auto-refresh monitoring interface
 
-🛠️ Technologies Used
+# 🛠️ Technologies Used
 
   Programming Language: Python
 
@@ -49,118 +49,64 @@ This project implements a real-time Face Recognition Based Secure Access Control
 
   Version Control: Git & GitHub
 
-📂 Project Structure
+# 📂 Project Structure
 FaceRecognitionAccess/
 │
-├── app.py                         # Streamlit dashboard + live camera
-├── live_recognition.py            # Standalone live recognition
-├── encode_faces.py                # Face encoding generator
-├── face_detection.py              # Face detection module
-├── camera_test.py                 # Webcam test
-├── encodings.pkl                  # Stored face encodings
+├── app.py
+├── encode_faces.py
+├── live_recognition.py
+├── face_detection.py
 ├── haarcascade_frontalface_default.xml
-├── dataset/                       # Face image dataset
-│   ├── person1/
-│   ├── person2/
-│   └── ...
-├── requirements.txt               # Python dependencies
+├── requirements.txt
 ├── .gitignore
-└── venv/                          # Virtual environment
-
-⚙️ Installation & Setup
-1️⃣ Clone the Repository
-git clone https://github.com/your-username/FaceRecognitionAccess.git
-cd FaceRecognitionAccess
-
-2️⃣ Create & Activate Virtual Environment
-python -m venv venv
-source venv/Scripts/activate   # Windows (Git Bash)
-
-3️⃣ Install Dependencies
-pip install -r requirements.txt
-
-🗄️ Database Setup (MySQL)
-
-Create database and table:
-
-CREATE DATABASE face_access_db;
-
-USE face_access_db;
-
-CREATE TABLE access_logs (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    person_name VARCHAR(100),
-    access_status VARCHAR(20),
-    confidence FLOAT,
-    access_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-📸 Dataset Preparation
-
-Create folders inside dataset/ with person names
-
-Capture 10–20 images per person
-
-Include different angles and lighting conditions
-
-Re-run encoding script after changes
-
-python encode_faces.py
-
-▶️ Running the Application
-Start Streamlit Dashboard
-streamlit run app.py
+│
+├── dataset/                 # (Ignored – contains face images)
+├── encodings.pkl            # (Ignored – generated file)
+├── venv/                    # (Ignored – virtual environment)
 
 
-Then open in browser:
 
-http://localhost:8501
+# 📊 Dashboard Overview
 
-📊 Dashboard Capabilities
+  Total Attempts – Total number of access requests  
+  Access Granted – Successful recognitions
+  Access Denied – Unauthorized attempts
+  Bar Chart Visualization – Real-time access decision summary
+  Live Camera Feed – Face detection and recognition overlay
 
-Live webcam recognition
+# 🔐 Access Decision Logic
 
-Access Granted / Denied metrics
+  Face is detected from the live camera feed
+  Face encoding is compared with stored encodings
+  If distance < threshold → Access Granted
+  Else → Access Denied
+  Each attempt is logged with timestamp and status
 
-Bar chart (Granted vs Denied)
+# ⚠️ Privacy & Security Notice
 
-Real-time MySQL access logs
+  The dataset/ folder containing face images is intentionally excluded from the repository
+  The encodings.pkl file is also excluded as it is generated locally
+  Users must create their own dataset and regenerate encodings
 
-🔐 Access Control Logic
-Condition	Action
-Face matched + confidence ≥ threshold	ACCESS GRANTED
-Face not matched / low confidence	ACCESS DENIED
-🧪 Testing & Observations
+# 📦 How to Run Locally :
 
-Tested under different lighting conditions
+    git clone https://github.com/<your-username>/FaceRecognitionAccess.git
+    cd FaceRecognitionAccess
+    pip install -r requirements.txt
+    python encode_faces.py
+    streamlit run app.py
 
-Accuracy depends on dataset quality
+# 🧠 Academic Significance
+This project demonstrates:
 
-Performance optimized by frame resizing
+  Practical application of biometric security systems
+  Integration of AI with web-based dashboards
+  Real-time decision-making using computer vision
+  Secure database-driven logging and monitoring
 
-⚠️ Limitations
-
-  Accuracy drops in low-light environments
-  
-  Sensitive to camera quality
-  
-  Single-camera support only
-
-🚀 Future Enhancements
-
-  Multi-camera support
-  
-  Liveness detection (anti-spoofing)
-  
-  Mobile app integration
-  
-  Cloud database deployment
-
-  Role-based access levels
-
-👩‍💻 Author
-Sridevi Lavanya M anf Dinesh S
+# 👩‍💻 Author
+Sridevi Lavanya M and Dinesh S
 M.Tech - AI & DS
 
-📜 License
+# 📜 License
 This project is for academic and educational purposes.
